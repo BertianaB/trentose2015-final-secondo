@@ -15,13 +15,19 @@ var FlirtrModel = {
     getScore: function (phrase) {
         var value = 0;
 
-        patterns.forEach(function (obj) {
+        patterns.forEach(function (obj){
             if (phrase.indexOf(obj.word) > -1) {
                 if (phrase.indexOf(obj.word) == -1) {
                     //nothing
                 }
-                else {
-                    value += obj.score;
+                else{
+                    if(phrase.indexOf(obj.support)>-1){
+                        value += obj.score;
+                    }
+                    else{
+                        value=0;    
+                    }
+                    
                 }
             }
         });
